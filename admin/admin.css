@@ -1,0 +1,140 @@
+/* Basic gallery editor styles */
+.simple-gallery-images-grid {
+
+    /**
+     * Set values.
+     */
+    --grid-layout-gap: 10px;
+    --grid-column-count: 4;
+    --grid-item--min-width: 200px;
+
+    /**
+     * Calculated values.
+     */
+    --gap-count: calc( var( --grid-column-count ) - 1);
+    --total-gap-width: calc( var( --gap-count ) * var( --grid-layout-gap ) );
+    --grid-item--max-width: calc( ( 100% - var( --total-gap-width ) ) / var( --grid-column-count ) );
+
+    display: grid;
+    grid-template-columns: repeat( auto-fill, minmax( max( var( --grid-item--min-width ), var( --grid-item--max-width ) ), 1fr ) );
+    grid-gap: var( --grid-layout-gap );
+}
+
+.simple-gallery-images-grid div.simple-gallery-image-container {
+    position: relative;
+}
+
+.simple-gallery-images-grid img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: calc( 4 / 3 );
+    object-fit: cover;
+    cursor: grab;
+}
+
+.simple-gallery-images-grid img:active {
+    cursor: grabbing;
+}
+
+.simple-gallery-images-grid .delete-image {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    background: red;
+    border: 1px solid black;
+    font-size: 18px;
+}
+
+#simple_gallery_editor .simple-gallery-remove-images {
+    color: #b32d2e;
+}
+
+/* Drag and drop styles */
+.simple-gallery-images-grid .swap-target::after {
+    position: absolute;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+    background: #00ffff45;
+    content: '';
+}
+
+.simple-gallery-images-grid .simple-gallery-temp-div {
+    display: none;
+}
+
+/* Checkbox Switch */
+.post-type-simple_gallery .simple-gallery-toggle {
+    position : relative ;
+    display : inline-block;
+    width : 42px;
+    height : 24px;
+    background-color: #ccc;
+    border-radius: 15px;
+    border: 2px solid gray;
+}
+
+.post-type-simple_gallery .simple-gallery-toggle:after {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: gray;
+    top: 1px;
+    left: 2px;
+    transition:  all 0.5s;
+}
+
+/* Checkbox checked effect */
+.post-type-simple_gallery .simple-gallery-checkbox:checked + .simple-gallery-toggle::after {
+    left : 18px;
+}
+
+.post-type-simple_gallery .simple-gallery-checkbox:checked + .simple-gallery-toggle {
+    background-color: green;
+}
+
+.post-type-simple_gallery input.simple-gallery-checkbox {
+    display : none;
+}
+
+/* Checkbox positioning */
+.post-type-simple_gallery .simple-gallery-switch-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+}
+
+.post-type-simple_gallery .simple-gallery-switch-text-left {
+    text-align: right;
+}
+
+.post-type-simple_gallery .simple-gallery-switch-text-right {
+    text-align: left;
+}
+
+.post-type-simple_gallery .simple-gallery-switch {
+    margin: auto 6px;
+}
+
+.post-type-simple_gallery .simple-gallery-switch-text {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+/* Other fields */
+#simple_gallery_settings label:has( + input[type="text"] ) {
+    font-size: 1em;
+    margin: 1.33em 0;
+    font-weight: 600;
+}
+
+#simple_gallery_settings .simple-gallery-switch-container:has( input[id="simple-gallery-preview-type"]:checked ) ~ input[id="simple-gallery-preview-number"], #simple_gallery_settings .simple-gallery-switch-container:has( input[id="simple-gallery-preview-type"]:checked ) ~ label[for="simple-gallery-preview-number"] {
+    display: none;
+}
+
+#simple_gallery_settings .simple-gallery-switch-container:has( input[id="simple-gallery-preview-type"] ) ~ input[id="simple-gallery-preview-number"], #simple_gallery_settings .simple-gallery-switch-container:has( input[id="simple-gallery-preview-type"] ) ~ label[for="simple-gallery-preview-number"] {
+    display: block;
+}
