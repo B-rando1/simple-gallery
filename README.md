@@ -11,4 +11,4 @@ Click and drag an image to change its location on the gallery.  By default, movi
 In this screen, you also get to choose how many images will appear as a preview in the frontend lightbox.  This is 7 by default, but you can choose any number or choose to show all images in the preview bar.
 
 ## Displaying a Gallery
-To display the gallery in a post, insert the shortcode **\[simple_gallery id=<gallery-id>\]** into the post, where **<gallery-id>** is the id of your gallery.  you can find the id when you are editing it: the url will contain something to the effect of "**post=<gallery-id>**". 
+To display the gallery in a post, insert the shortcode **\[simple_gallery id=\<gallery-id\>\]** into the post, where **\<gallery-id\>** is the id of your gallery.  you can find the id when you are editing it: the url will contain something to the effect of "**post=\<gallery-id\>**". 
